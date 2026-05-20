@@ -3,10 +3,10 @@ services:
     image: ghcr.io/thomasehardt/open-resume:latest
     build: .
     volumes:
-      # Mount your resume data file
-      - ./resume.yaml:/app/resume.yaml
+      # Mount your resume data file (read-only)
+      - ./resume.yaml:/app/resume.yaml:ro
       # Mount an output directory (created automatically)
       - ./output:/app/output
       # Optionally mount custom themes
       # - ./custom-themes:/app/custom/themes
-    command: -d /app/resume.yaml -o /app/output
+    command: -o /app/output

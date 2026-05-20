@@ -10,7 +10,8 @@ from weasyprint import HTML
 
 BUILTIN_THEMES_DIR = "src/templates/themes"
 BUILTIN_TEMPLATES_DIR = "src/templates"
-DEFAULT_DATA = "src/content/examples/senior-backend-engineer.yaml"
+DEFAULT_DATA = "/app/resume.yaml"
+FALLBACK_DATA = "src/content/examples/senior-backend-engineer.yaml"
 
 
 def load_resume_data(data_file):
@@ -301,8 +302,12 @@ def main():
 
     data_file = args.data if os.path.isabs(args.data) else os.path.join(project_root, args.data)
     if not os.path.exists(data_file):
-        print(f"Error: Data file not found: {data_file}")
-        sys.exit(1)
+        fallback = os.path.join(project_root, FALLBACK_DATA)
+        if args.data == DEFAULT_DATA and os.path.exists(fallback):
+            data_file = fallback
+        else:
+            print(f"Error: Data file not found: {data_file}")
+            sys.exit(1)
 
     data = load_resume_data(data_file)
 

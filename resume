@@ -35,7 +35,7 @@ case "${1:-}" in
     mkdir -p "$OUTPUT"
     # shellcheck disable=SC2086
     docker run --rm \
-      -v "$(pwd)/$DATA:/app/resume.yaml" \
+      -v "$(pwd)/$DATA:/app/resume.yaml:ro" \
       -v "$(pwd)/$OUTPUT:/app/output" \
       $THEMES_MOUNT \
       --entrypoint python3 \
@@ -72,20 +72,20 @@ case "${1:-}" in
     mkdir -p "$OUTPUT"
     # shellcheck disable=SC2086
     docker run --rm \
-      -v "$(pwd)/$DATA:/app/resume.yaml" \
+      -v "$(pwd)/$DATA:/app/resume.yaml:ro" \
       -v "$(pwd)/$OUTPUT:/app/output" \
       $THEMES_MOUNT \
       "$IMAGE" \
-      -d /app/resume.yaml -t "$THEME" $THEMES_ARG
+      -t "$THEME" $THEMES_ARG
     ;;
   *)
     mkdir -p "$OUTPUT"
     # shellcheck disable=SC2086
     docker run --rm \
-      -v "$(pwd)/$DATA:/app/resume.yaml" \
+      -v "$(pwd)/$DATA:/app/resume.yaml:ro" \
       -v "$(pwd)/$OUTPUT:/app/output" \
       $THEMES_MOUNT \
       "$IMAGE" \
-      -d /app/resume.yaml $THEMES_ARG
+      $THEMES_ARG
     ;;
 esac

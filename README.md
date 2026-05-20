@@ -51,10 +51,9 @@ DATA=my-resume.yaml OUTPUT=dist ./resume
 
 ```bash
 docker run --rm \
-  -v $(pwd)/resume.yaml:/app/resume.yaml \
+  -v $(pwd)/resume.yaml:/app/resume.yaml:ro \
   -v $(pwd)/output:/app/output \
-  ghcr.io/thomasehardt/open-resume \
-  -d /app/resume.yaml
+  ghcr.io/thomasehardt/open-resume
 ```
 
 ### Docker Compose
@@ -73,11 +72,11 @@ THEMES_DIR=my-themes ./resume modern
 
 # or via Docker directly
 docker run --rm \
-  -v $(pwd)/resume.yaml:/app/resume.yaml \
+  -v $(pwd)/resume.yaml:/app/resume.yaml:ro \
   -v $(pwd)/output:/app/output \
   -v $(pwd)/my-themes:/app/custom/themes \
   ghcr.io/thomasehardt/open-resume \
-  -d /app/resume.yaml -t compact
+  -t compact
 ```
 
 See [THEMES.md](THEMES.md) for details on creating custom themes.
