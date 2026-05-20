@@ -1,0 +1,83 @@
+name: Sam Wilson
+title: Software Engineer
+location: Austin, TX 78701
+phone: "+1.512.555.0148"
+email: sam.wilson@example.com
+linkedin: https://linkedin.com/in/sam-wilson-example
+
+summary: |
+  Software Engineer with 2 years of professional experience building full-stack web applications and data pipelines. Recent computer science graduate passionate about backend systems, API design, and clean, testable code. Quick to adapt and eager to contribute to high-impact engineering teams.
+
+skills:
+  - category: Languages
+    skills_list:
+      - Python
+      - JavaScript
+      - TypeScript
+      - SQL
+      - Java
+  - category: Frameworks & Libraries
+    skills_list:
+      - React
+      - Node.js
+      - Express
+      - Django
+      - Jest
+  - category: Tools & Infrastructure
+    skills_list:
+      - Git
+      - Docker
+      - AWS (EC2, S3)
+      - PostgreSQL
+      - Linux
+  - category: Practices
+    skills_list:
+      - REST API Design
+      - Unit & Integration Testing
+      - CI/CD
+      - Agile Development
+
+employment:
+  - company: Greenline Energy
+    title: Software Engineer
+    start_date: Jun 2023
+    end_date: Present
+    description: |
+      Full-stack engineer on the customer platform team for a clean energy startup, building web applications for residential solar customers.
+    achievements:
+      - text: Built a customer dashboard in React and TypeScript displaying real-time solar energy production data, serving 15,000+ active users.
+        short: Built a React dashboard serving 15K+ users for real-time solar data.
+      - text: Designed and implemented a RESTful API in Python and Django for managing customer device registrations, reducing manual data entry by 20 hours per week.
+        short: Reduced manual data entry by 20 hours/week via a device registration API.
+      - text: Wrote 200+ unit and integration tests, increasing test coverage from 45% to 85% and catching 3 production bugs before deployment.
+        short: Increased test coverage from 45% to 85%, catching 3 bugs pre-deployment.
+      - text: Automated the deployment pipeline using GitHub Actions and Docker, reducing release time from 2 hours to 15 minutes.
+        short: Cut release time from 2 hours to 15 minutes via CI/CD automation.
+
+  - company: TechStart Internships
+    title: Software Engineering Intern
+    start_date: Jun 2022
+    end_date: Aug 2022
+    description: |
+        Summer internship on the platform engineering team, contributing to internal developer tools.
+    achievements:
+      - text: Developed an internal CLI tool in Python for provisioning development environments, adopted by 12 engineers on the team.
+        short: Built a Python CLI tool for dev environment provisioning, adopted by 12 engineers.
+      - text: Refactored legacy database queries in a Django application, reducing average page load time by 30%.
+        short: Reduced page load times by 30% through query optimization.
+
+projects:
+  - name: Open Source Contribution Tracker
+    description: |
+      Web app that tracks and visualizes open-source contributions across GitHub organizations. Built with React, Node.js, and the GitHub API.
+    achievements:
+      - text: Used by 3 local meetup groups to track community contributions.
+  - name: Personal Budget CLI
+    description: |
+      Command-line budgeting tool written in Python with SQLite persistence. Features customizable category tracking and monthly spending reports.
+    achievements:
+      - text: 200+ stars on GitHub with contributions from 5 open-source developers.
+
+education:
+  - degree: Bachelor of Science (BS) in Computer Science
+    institution: University of Texas at Austin

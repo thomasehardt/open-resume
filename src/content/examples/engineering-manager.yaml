@@ -1,0 +1,87 @@
+name: Rachel Nakamura
+title: Engineering Manager
+location: Chicago, IL 60606
+phone: "+1.312.555.0467"
+email: rachel.nakamura@example.com
+linkedin: https://linkedin.com/in/rachel-nakamura-example
+
+summary: |
+  Engineering Manager with 12+ years of experience spanning individual contribution and team leadership. Managed teams of 6-12 engineers across data platform and backend services. Track record of improving team velocity by 3x, reducing attrition to under 5%, and delivering multi-quarter platform migrations on schedule. Strong advocate for engineering excellence, psychological safety, and career growth for direct reports.
+
+skills:
+  - category: Leadership & Management
+    skills_list:
+      - Team Building & Hiring
+      - Career Coaching & Mentorship
+      - Performance Management
+      - Agile / Scrum Facilitation
+      - Cross-Functional Stakeholder Management
+  - category: Technical
+    skills_list:
+      - System Design & Architecture
+      - Microservices
+      - Cloud Infrastructure
+      - CI/CD Strategy
+      - API Design
+  - category: Platforms & Tools
+    skills_list:
+      - AWS
+      - Kubernetes
+      - PostgreSQL
+      - Apache Kafka
+      - Datadog
+  - category: Languages
+    skills_list:
+      - Java
+      - Python
+      - TypeScript
+      - SQL
+
+employment:
+  - company: Logix Automation
+    title: Engineering Manager
+    start_date: Jan 2022
+    end_date: Present
+    description: |
+      Manage a team of 8 backend and platform engineers responsible for the core workflow automation engine serving 10K+ business customers.
+    achievements:
+      - text: Grew the team from 4 to 8 engineers while reducing attrition to under 5%, maintaining a 4.6/5 average engagement score in quarterly surveys.
+        short: Scaled team from 4 to 8 with under 5% attrition and 4.6/5 engagement.
+      - text: Led a 12-month migration of the core workflow engine from a monolith to event-driven microservices, delivering on schedule and reducing mean time to deploy from 2 hours to 12 minutes.
+        short: Delivered monolith-to-microservices migration on schedule, cutting deploy time from 2h to 12min.
+      - text: Established engineering standards for code review, testing, and documentation that reduced production incidents by 60% in the first year.
+        short: Reduced production incidents by 60% through engineering standards.
+      - text: Designed a career progression framework with clear expectations for each level, resulting in 6 promotions across the team in 2 years.
+        short: Drove 6 team promotions in 2 years with a career progression framework.
+
+  - company: AtlasPay
+    title: Senior Software Engineer / Tech Lead
+    start_date: Mar 2018
+    end_date: Dec 2021
+    description: |
+      Tech lead for the payments platform team handling $500M+ in annual transaction volume. Transitioned from IC to tech lead role over the course of 2 years.
+    achievements:
+      - text: Led a team of 5 engineers in rebuilding the payments processing pipeline, reducing settlement time from T+2 to same-day and increasing transaction throughput by 4x.
+        short: Led 5-engineer team to reduce settlement from T+2 to same-day with 4x throughput.
+      - text: Mentored 3 junior engineers through structured 1-on-1 coaching and pair programming; all 3 were promoted to mid-level within 18 months.
+        short: Mentored 3 junior engineers who all reached mid-level within 18 months.
+      - text: Drove adoption of chaos engineering practices, improving system resilience and reducing P0 incidents by 45% over 2 years.
+        short: Reduced P0 incidents by 45% through chaos engineering adoption.
+
+  - company: DevBridge Solutions
+    title: Software Engineer III
+    start_date: Mar 2015
+    end_date: Feb 2018
+    description: |
+        Full-stack engineer on the integrations team building APIs and ETL pipelines for enterprise customers.
+    achievements:
+      - text: Designed and shipped a RESTful API for third-party integrations that on-boarded 40+ enterprise customers in 12 months.
+        short: Shipped an integration API that onboarded 40+ enterprise customers in 12 months.
+      - text: Reduced API p99 latency from 800ms to 200ms by introducing caching layers and optimizing database queries.
+        short: Reduced API p99 latency from 800ms to 200ms through caching and query optimization.
+
+education:
+  - degree: Master of Science (MS) in Computer Science
+    institution: Northwestern University
+  - degree: Bachelor of Science (BS) in Computer Science
+    institution: University of Illinois at Urbana-Champaign

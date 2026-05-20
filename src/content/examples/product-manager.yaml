@@ -1,0 +1,85 @@
+name: Jordan Lee
+title: Senior Product Manager
+location: New York, NY 10012
+phone: "+1.212.555.0398"
+email: jordan.lee@example.com
+linkedin: https://linkedin.com/in/jordan-lee-example
+
+summary: |
+  Senior Product Manager with 8 years of experience leading cross-functional teams to build and launch B2B SaaS products. Track record of driving product-led growth, reducing churn, and delivering measurable revenue impact. Expert in user research, experiment-driven roadmapping, and aligning engineering, design, and business stakeholders around shared outcomes.
+
+skills:
+  - category: Product Management
+    skills_list:
+      - Product Strategy & Roadmapping
+      - User Research & Discovery
+      - A/B Testing & Experimentation
+      - OKR & KPI Definition
+      - Stakeholder Management
+  - category: Technical
+    skills_list:
+      - SQL
+      - Amplitude
+      - Mixpanel
+      - Jira
+      - Confluence
+      - PostHog
+  - category: Methodologies
+    skills_list:
+      - Agile / Scrum
+      - Product-Led Growth
+      - Lean Startup
+      - Design Thinking
+  - category: Domain
+    skills_list:
+      - B2B SaaS
+      - Platform Products
+      - API Products
+      - AI/ML Product Strategy
+
+employment:
+  - company: BridgeCorp Software
+    title: Senior Product Manager
+    start_date: Feb 2021
+    end_date: Present
+    description: |
+      Own the product strategy and execution for a B2B collaboration platform with 50K+ paid seats across mid-market and enterprise customers.
+    achievements:
+      - text: Led a product-led growth initiative redesigning the self-serve onboarding flow, increasing free-to-paid conversion by 28% and reducing time-to-value from 14 days to 4 days.
+        short: Increased free-to-paid conversion by 28% and cut time-to-value from 14 to 4 days.
+      - text: Identified a 40% drop-off in the team invitation flow through funnel analysis; ran 3 A/B tests on progressive disclosure, increasing team activation by 22%.
+        short: Increased team activation by 22% by fixing a 40% drop-off in the invitation funnel.
+      - text: Drove the roadmap for a new API integration marketplace, resulting in 150+ partner integrations in the first year and contributing $3.5M in annual recurring revenue.
+        short: Launched an API marketplace driving 150+ integrations and $3.5M in ARR.
+      - text: Defined quarterly OKRs and product metrics framework adopted across 4 product teams, improving cross-team visibility and strategic alignment.
+        short: Established an OKR framework adopted across 4 product teams.
+
+  - company: Helios Media
+    title: Product Manager
+    start_date: Aug 2018
+    end_date: Jan 2021
+    description: |
+      Managed the content publishing platform for a digital media company reaching 15M monthly active users.
+    achievements:
+      - text: Rebuilt the content scheduling and analytics module, reducing publisher workflow time by 35% and increasing daily active authors by 18%.
+        short: Reduced publisher workflow by 35% via a rebuilt scheduling and analytics module.
+      - text: Conducted 40+ user interviews and usability tests to identify pain points in the article editor, leading to a redesign that reduced support tickets by 45%.
+        short: Cut support tickets by 45% through a user-research-driven editor redesign.
+      - text: Partnered with engineering to migrate the CMS from a legacy monolith to a headless architecture, reducing page load times by 60%.
+        short: Improved page load times by 60% via headless CMS migration.
+
+  - company: Sprintly
+    title: Associate Product Manager
+    start_date: Jan 2017
+    end_date: Jul 2018
+    description: |
+      Rotational APM program covering growth, platform, and mobile product teams.
+    achievements:
+      - text: Shipped a push notification personalization feature that improved 7-day retention by 12% for the mobile app.
+        short: Improved 7-day mobile retention by 12% with personalized push notifications.
+      - text: Wrote 50+ product specs and coordinated engineering sprints for the growth team, delivering 2 major features per quarter on schedule.
+        short: Coordinated engineering sprints delivering 2 major features per quarter.
+
+education:
+  - degree: Bachelor of Arts (BA) in Economics
+    institution: Columbia University

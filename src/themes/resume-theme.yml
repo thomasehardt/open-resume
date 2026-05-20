@@ -10,12 +10,12 @@ footer:
   recto:
     columns: "<75% >25%"
     left:
-      content: "Spring Hill, TN 37174 · thomas@ehardt.net · +1.615.852.8611 · linkedin.com/in/thomas-ehardt"
+      content: "Page {page-number} of {page-count}"
     right:
       content: "Page {page-number} of {page-count}"
   verso:
     columns: "<75% >25%"
     left:
-      content: "Spring Hill, TN 37174 · thomas@ehardt.net · +1.615.852.8611 · linkedin.com/in/thomas-ehardt"
+      content: "Page {page-number} of {page-count}"
     right:
       content: "Page {page-number} of {page-count}"

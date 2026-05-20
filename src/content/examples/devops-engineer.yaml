@@ -1,0 +1,91 @@
+name: Priya Sharma
+title: Senior DevOps Engineer
+location: Denver, CO 80202
+phone: "+1.720.555.0612"
+email: priya.sharma@example.com
+linkedin: https://linkedin.com/in/priya-sharma-example
+
+summary: |
+  Senior DevOps Engineer with 9 years of experience building and operating cloud infrastructure at scale. Expertise in Kubernetes, Terraform, CI/CD, and incident response. Reduced infrastructure costs by 40% and improved deployment frequency from weekly to multiple times per day across a 200-microservice ecosystem. Certified Kubernetes Administrator.
+
+skills:
+  - category: Cloud & Infrastructure
+    skills_list:
+      - AWS
+      - GCP
+      - Kubernetes
+      - Docker
+      - Terraform
+      - Helm
+  - category: CI/CD & Automation
+    skills_list:
+      - GitHub Actions
+      - ArgoCD
+      - Jenkins
+      - Spinnaker
+      - Ansible
+  - category: Observability
+    skills_list:
+      - Prometheus
+      - Grafana
+      - Datadog
+      - ELK Stack
+      - OpenTelemetry
+  - category: Systems & Networking
+    skills_list:
+      - Linux
+      - Nginx
+      - Envoy
+      - Istio
+      - Vault
+
+employment:
+  - company: NexusPay Financial
+    title: Senior DevOps Engineer
+    start_date: Mar 2022
+    end_date: Present
+    description: |
+      Lead the platform reliability team for a fintech processing $2B+ in monthly transactions across 10 global regions.
+    achievements:
+      - text: Architected a multi-region Kubernetes cluster spanning 3 AWS regions with automated failover, achieving 99.995% uptime and reducing RTO from 4 hours to under 10 minutes.
+        short: Achieved 99.995% uptime with multi-region Kubernetes and sub-10-min RTO.
+      - text: Reduced cloud infrastructure costs by 40% ($1.8M annually) by implementing spot instance strategies, right-sizing, and commitment-based pricing across 200+ services.
+        short: Cut cloud costs by 40% ($1.8M/year) across 200+ services.
+      - text: Migrated CI/CD from a weekly release train to GitOps-based continuous delivery with ArgoCD, increasing deployment frequency from 4 per week to 50+ per week.
+        short: Increased deployment frequency from 4 to 50+ per week via GitOps migration.
+      - text: Designed a comprehensive incident response runbook and on-call rotation, reducing mean time to acknowledge from 15 minutes to under 2 minutes.
+        short: Reduced MTTA from 15 to under 2 minutes with improved incident response.
+
+  - company: StreamHive Data
+    title: DevOps Engineer
+    start_date: Jan 2019
+    end_date: Feb 2022
+    description: |
+        Owned infrastructure and release engineering for a real-time data streaming platform processing 500K events per second.
+    achievements:
+      - text: Containerized 30+ microservices using Docker and Kubernetes, enabling blue-green deployments and reducing rollback time from 1 hour to under 5 minutes.
+        short: Containerized 30+ microservices, cutting rollback time from 1 hour to 5 minutes.
+      - text: Built a centralized logging and monitoring stack with the ELK stack and Prometheus, reducing mean time to detection from 30 minutes to under 3 minutes.
+        short: Reduced MTD from 30 to 3 minutes with centralized monitoring.
+      - text: Automated SSL certificate management and secret rotation with cert-manager and HashiCorp Vault, eliminating 10 hours of manual maintenance per week.
+        short: Eliminated 10 hours/week of manual cert management with automation.
+
+  - company: EduCloud
+    title: Systems Administrator
+    start_date: Jun 2016
+    end_date: Dec 2018
+    description: |
+        Managed Linux server infrastructure and deployment pipelines for an educational SaaS platform.
+    achievements:
+      - text: Migrated on-premise infrastructure to AWS, reducing hardware costs by 60% and improving environment provisioning time from weeks to minutes.
+        short: Migrated to AWS, reducing costs by 60% and provisioning from weeks to minutes.
+      - text: Wrote Ansible playbooks that automated server configuration across 100+ instances, reducing setup time by 80%.
+        short: Automated server config across 100+ instances, reducing setup time by 80%.
+
+certifications:
+  - Certified Kubernetes Administrator (CKA)
+  - AWS Solutions Architect - Professional
+
+education:
+  - degree: Bachelor of Science (BS) in Computer Engineering
+    institution: Colorado State University

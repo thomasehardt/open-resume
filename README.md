@@ -21,15 +21,15 @@ docker run --rm -v $(pwd):/app resume-generator --list-themes
 
 ## Data Format
 
-Resume data lives in `src/content/thomas-ehardt.yaml`:
+Resume data lives in YAML files under `src/content/`. See `src/content/examples/` for ready-to-use samples covering various roles and experience levels.
 
 ```yaml
-name: Thomas Ehardt
+name: Your Name
 title: Software Engineer
-location: Spring Hill, TN 37174
-phone: "+1.615.852.8611"
-email: thomas@ehardt.net
-linkedin: https://linkedin.com/in/thomas-ehardt
+location: City, State ZIP
+phone: "+1.555.555.0100"
+email: you@example.com
+linkedin: https://linkedin.com/in/your-profile
 
 summary: |
   Your professional summary text here.
@@ -48,8 +48,9 @@ employment:
     description: |
       Role description.
     achievements:
-      - Achievement one
-      - Achievement two
+      - text: Full achievement bullet.
+        short: Optional shorter version.
+      - text: Another achievement.
 
 education:
   - degree: Degree Name
@@ -60,6 +61,7 @@ education:
 
 - Multi-line text uses `|` followed by indented content
 - Use `skills_list` (not `items`) for skill lists
+- Achievements use objects with required `text` and optional `short` fields
 - Dates can be actual dates or strings like "Present" or "Aug 2020"
 
 ## Themes
@@ -147,10 +149,12 @@ docker run --rm -v $(pwd):/app resume-generator -t modern
 ## Output Formats
 
 Generated files (in `output/`):
-- `thomas-ehardt-<theme>.html` - HTML
-- `thomas-ehardt-<theme>.pdf` - PDF (via WeasyPrint)
-- `thomas-ehardt-<theme>.docx` - Word (via Pandoc)
-- `thomas-ehardt-<theme>.txt` - Plain text
+- `<name>-<theme>.html` - HTML
+- `<name>-<theme>.pdf` - PDF (via WeasyPrint)
+- `<name>-<theme>.docx` - Word (via Pandoc)
+- `<name>-<theme>.txt` - Plain text
+
+Output filenames are derived from the `name` field in your YAML data file.
 
 ## Development
 

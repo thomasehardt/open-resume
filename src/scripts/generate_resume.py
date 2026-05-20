@@ -189,7 +189,7 @@ def generate_txt(input_html, output_path):
 
 def generate_all_versions(data, output_base, templates_dir):
     """Generate specific standardized versions: ATS and Modern."""
-    base_name = "thomas-ehardt"
+    base_name = data.get("name", "resume").lower().replace(" ", "-")
     
     # Configuration for specific standardized outputs
     configs = [
@@ -238,7 +238,7 @@ def main():
     parser.add_argument(
         "-d",
         "--data",
-        default="src/content/thomas-ehardt.yaml",
+        default="src/content/examples/senior-backend-engineer.yaml",
         help="Path to YAML data file",
     )
     parser.add_argument("-o", "--output", default="output", help="Output directory")

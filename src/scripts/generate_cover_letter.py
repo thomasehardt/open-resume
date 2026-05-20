@@ -24,7 +24,7 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
     template_file = os.path.join(project_root, args.template)
-    data_file = os.path.join(project_root, "src/content/thomas-ehardt.yaml")
+    data_file = os.path.join(project_root, "src/content/examples/senior-backend-engineer.yaml")
 
     with open(data_file) as f:
         resume = yaml.safe_load(f)

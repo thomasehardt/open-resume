@@ -1,0 +1,86 @@
+name: Olivia Torres
+title: Senior Product Designer
+location: Los Angeles, CA 90024
+phone: "+1.310.555.0412"
+email: olivia.torres@example.com
+linkedin: https://linkedin.com/in/olivia-torres-example
+
+summary: |
+  Senior Product Designer with 8 years of experience designing B2B SaaS products used by 50K+ businesses. Expert in end-to-end product design from user research through high-fidelity prototyping and design system management. Led design initiatives that improved user activation by 30%, reduced support tickets by 45%, and shipped a design system adopted by 5 product teams.
+
+skills:
+  - category: Design Disciplines
+    skills_list:
+      - UX Research
+      - Interaction Design
+      - Visual Design
+      - Information Architecture
+      - Prototyping
+  - category: Tools
+    skills_list:
+      - Figma
+      - Sketch
+      - Principle
+      - Maze
+      - Framer
+  - category: Research Methods
+    skills_list:
+      - Usability Testing
+      - User Interviews
+      - A/B Testing
+      - Survey Design
+      - Analytics (Amplitude, Hotjar)
+  - category: Design Systems
+    skills_list:
+      - Component Library Design
+      - Design Tokens
+      - Accessibility (WCAG 2.1)
+      - Documentation
+      - Design-Engineering Handoff
+
+employment:
+  - company: FlowState Software
+    title: Senior Product Designer
+    start_date: Apr 2021
+    end_date: Present
+    description: |
+      Lead product design for the core workflow builder in a B2B process automation platform. Drive design strategy, user research, and cross-functional collaboration with product and engineering.
+    achievements:
+      - text: Redesigned the workflow builder canvas based on 30+ user interviews and 5 rounds of usability testing, reducing workflow creation time by 40% and increasing feature adoption by 25%.
+        short: Cut workflow creation time by 40% and increased adoption by 25% via canvas redesign.
+      - text: Established a centralized design system in Figma with 60+ reusable components and shared design tokens, reducing engineering implementation time by 35%.
+        short: Built a 60-component design system that cut engineering implementation time by 35%.
+      - text: Led an accessibility audit and remediation effort that achieved WCAG 2.1 AA compliance across the product, reducing accessibility-related bug reports from 30 per quarter to under 3.
+        short: Achieved WCAG 2.1 AA compliance, reducing accessibility bugs from 30 per quarter to under 3.
+      - text: Partnered with product management to define an outcomes-driven research roadmap, conducting discovery research that informed 3 major feature investments in the annual roadmap.
+        short: Informed 3 major feature investments through a research roadmap partnership with PM.
+
+  - company: CreateHub
+    title: Product Designer
+    start_date: Aug 2018
+    end_date: Mar 2021
+    description: |
+      Product designer for a collaborative design feedback platform used by 10K+ creative teams.
+    achievements:
+      - text: Redesigned the comment and review system after identifying a 35% drop-off in the feedback completion funnel, increasing completed reviews by 28%.
+        short: Increased completed reviews by 28% by redesigning the feedback system.
+      - text: Introduced a design sprint methodology to the team, running 6 workshops that accelerated 3 product concepts from idea to validated prototype in 1 week each.
+        short: Accelerated 3 product concepts from idea to validated prototype in 1 week via design sprints.
+      - text: Built and maintained a component-based UI library in Figma used by 3 designers and 8 engineers, ensuring visual consistency across 15 product surfaces.
+        short: Built a Figma UI library maintaining visual consistency across 15 product surfaces.
+
+  - company: SparkLabs
+    title: Junior UX Designer
+    start_date: Feb 2017
+    end_date: Jul 2018
+    description: |
+      UX designer for a mobile-first expense management app serving 50K small business users.
+    achievements:
+      - text: Streamlined the expense submission flow from 7 screens to 3, increasing daily active submissions by 35% and reducing abandonment by 20%.
+        short: Simplified expense flow from 7 to 3 screens, increasing submissions by 35%.
+      - text: Conducted competitive analysis and heuristic evaluations that led to 12 usability improvements in the first quarter.
+        short: Identified 12 usability improvements through competitive analysis and heuristic evaluation.
+
+education:
+  - degree: Bachelor of Fine Arts (BFA) in Graphic Design
+    institution: California Institute of the Arts

@@ -1,0 +1,87 @@
+name: Elena Vasquez
+title: Senior Data Engineer
+location: Boston, MA 02110
+phone: "+1.617.555.0571"
+email: elena.vasquez@example.com
+linkedin: https://linkedin.com/in/elena-vasquez-example
+
+summary: |
+  Senior Data Engineer with 8 years of experience designing and building scalable data platforms. Specialized in modernizing legacy ETL pipelines, reducing costs through efficient compute strategies, and enabling self-service analytics for business teams. Built platforms processing 10TB+ of data daily across batch and streaming workloads.
+
+skills:
+  - category: Data Processing
+    skills_list:
+      - Apache Spark
+      - Apache Flink
+      - DuckDB
+      - dbt
+      - Airflow
+      - Kafka
+  - category: Storage & Warehousing
+    skills_list:
+      - Snowflake
+      - BigQuery
+      - Postgres
+      - Iceberg
+      - S3 / GCS
+  - category: Cloud & Infrastructure
+    skills_list:
+      - AWS
+      - GCP
+      - Terraform
+      - Docker
+      - Kubernetes
+  - category: Languages
+    skills_list:
+      - Python
+      - SQL
+      - Java
+      - Scala
+      - Go
+
+employment:
+  - company: Meridian Analytics
+    title: Senior Data Engineer
+    start_date: Mar 2022
+    end_date: Present
+    description: |
+      Lead data platform engineering for a marketing analytics company processing 5B+ events per month. Own the architecture, cost optimization, and reliability of the batch and streaming data pipeline.
+    achievements:
+      - text: Architected a migration from Databricks Spark clusters to DuckDB for scheduled batch workloads, reducing monthly infrastructure costs by 65% ($200K/year) while maintaining identical processing SLAs.
+        short: Cut infrastructure costs by 65% ($200K/year) migrating Spark batch workloads to DuckDB.
+      - text: Designed a real-time event ingestion pipeline using Kafka and Flink processing 50K events per second with sub-second latency, enabling new customer-facing analytics features.
+        short: Built a real-time pipeline processing 50K events/sec with sub-second latency.
+      - text: Implemented a medallion architecture (bronze/silver/gold) in dbt and Snowflake, reducing data QA failures by 80% and cutting analyst query times by 60%.
+        short: Reduced QA failures by 80% and analyst query times by 60% with medallion architecture.
+      - text: Standardized data pipeline tooling and CI/CD practices across 4 data engineering teams, reducing pipeline deployment time from 2 days to 2 hours.
+        short: Standardized CI/CD across 4 teams, cutting deployment from 2 days to 2 hours.
+
+  - company: SailPoint Data
+    title: Data Engineer
+    start_date: Feb 2019
+    end_date: Feb 2022
+    description: |
+      Data engineer on the platform team, building and maintaining batch ETL pipelines for a B2B data enrichment product.
+    achievements:
+      - text: Rebuilt a legacy 48-hour batch processing pipeline into an incremental streaming pipeline running on Spark Structured Streaming, cutting processing time to 2 hours.
+        short: Reduced 48-hour batch processing to 2 hours with Spark Structured Streaming.
+      - text: Migrated 30+ legacy Python ETL scripts to dbt models with automated testing and documentation, reducing data incident frequency by 70%.
+        short: Migrated 30+ ETL scripts to dbt, reducing data incidents by 70%.
+      - text: Built a data quality monitoring framework using Great Expectations that detected schema changes and data anomalies across 200+ pipeline outputs.
+        short: Built data quality monitoring catching anomalies across 200+ pipeline outputs.
+
+  - company: RetailGrid
+    title: Junior Data Engineer
+    start_date: Sep 2017
+    end_date: Jan 2019
+    description: |
+      Built and maintained ETL pipelines for inventory and supply chain analytics.
+    achievements:
+      - text: Developed automated data validation checks for inventory feeds, reducing data discrepancy reports from 15 per week to fewer than 2.
+        short: Automated inventory validation, reducing discrepancy reports from 15/week to under 2.
+      - text: Created dashboards in Metabase and Tableau for supply chain KPIs, adopted by the operations team for daily decision-making.
+        short: Built supply chain dashboards adopted by operations for daily decisions.
+
+education:
+  - degree: Bachelor of Science (BS) in Computer Science
+    institution: Northeastern University

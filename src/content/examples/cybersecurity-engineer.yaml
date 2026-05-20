@@ -1,0 +1,91 @@
+name: David Okonkwo
+title: Security Engineer
+location: Washington, DC 20005
+phone: "+1.202.555.0384"
+email: david.okonkwo@example.com
+linkedin: https://linkedin.com/in/david-okonkwo-example
+
+summary: |
+  Security Engineer with 7 years of experience in application security, cloud security, and incident response. Led a security transformation that reduced critical vulnerabilities by 80% across a 200+ microservice ecosystem. Skilled in threat modeling, penetration testing, and building security tooling. OSCP and AWS Security certified.
+
+skills:
+  - category: Application Security
+    skills_list:
+      - Threat Modeling
+      - SAST / DAST
+      - Penetration Testing
+      - Secure Code Review
+      - OWASP Top 10
+  - category: Cloud Security
+    skills_list:
+      - AWS Security
+      - Kubernetes Security
+      - Infrastructure as Code (Terraform)
+      - IAM Policy Design
+      - Container Security
+  - category: Detection & Response
+    skills_list:
+      - Incident Response
+      - SIEM (Splunk, ELK)
+      - Threat Hunting
+      - Forensics
+      - SOAR
+  - category: Languages & Tools
+    skills_list:
+      - Python
+      - Go
+      - Bash
+      - Burp Suite
+      - Wireshark
+
+employment:
+  - company: FortiCore Security
+    title: Security Engineer
+    start_date: Jun 2022
+    end_date: Present
+    description: |
+      Application security engineer embedded with platform engineering teams. Drive security practices across the SDLC for a SaaS platform serving 500+ enterprise customers.
+    achievements:
+      - text: Built a security pipeline integrating SAST, DAST, and SCA tools into the CI/CD workflow, reducing mean time to remediate from 45 days to under 5 days.
+        short: Reduced MTTR from 45 days to under 5 with integrated security tooling in CI/CD.
+      - text: Led a threat modeling initiative covering 50+ critical services, identifying and remediating 120+ design-level risks before they reached production.
+        short: Identified 120+ design risks through threat modeling of 50+ critical services.
+      - text: Conducted tabletop incident response exercises with 6 engineering teams, improving mean time to contain from 2 hours to under 25 minutes.
+        short: Improved containment time from 2 hours to under 25 minutes via tabletop exercises.
+      - text: Migrated 100+ service accounts from long-lived credentials to short-lived tokens using AWS IAM Roles Anywhere and Vault, eliminating a major blast-radius risk.
+        short: Eliminated long-lived credentials across 100+ service accounts with short-lived tokens.
+
+  - company: CloudHelm
+    title: Security Analyst
+    start_date: Aug 2019
+    end_date: May 2022
+    description: |
+        Security operations and compliance for a cloud-based HR platform with 2M+ users. Built monitoring, investigated alerts, and managed vulnerability remediation.
+    achievements:
+      - text: Designed and implemented a centralized logging and alerting pipeline with the ELK stack and Sigma rules, detecting 98% of simulated attack scenarios.
+        short: Built a detection pipeline catching 98% of simulated attacks.
+      - text: Automated vulnerability scanning and ticketing for 200+ AWS resources using Python and Security Hub, reducing manual triage effort by 70%.
+        short: Automated vulnerability scanning across 200+ AWS resources, cutting manual triage by 70%.
+      - text: Led the SOC 2 Type II certification effort, authoring 15 security policies and controls that passed with zero findings.
+        short: Led SOC 2 Type II certification with zero findings across 15 policies.
+
+  - company: University Medical Center
+    title: IT Security Intern
+    start_date: Jan 2018
+    end_date: Jul 2019
+    description: |
+        Supported the security team in monitoring, incident response, and user awareness training for a regional healthcare network.
+    achievements:
+      - text: Developed a phishing simulation program that reduced employee click-through rates from 18% to 4% over 6 monthly campaigns.
+        short: Reduced phishing click-through from 18% to 4% via simulation program.
+      - text: Assisted in 5 incident response investigations, contributing to forensic analysis and post-mortem reporting.
+        short: Assisted on 5 incident response investigations with forensic analysis.
+
+certifications:
+  - OSCP (Offensive Security Certified Professional)
+  - AWS Certified Security - Specialty
+  - Certified Kubernetes Security Specialist (CKS)
+
+education:
+  - degree: Bachelor of Science (BS) in Cybersecurity
+    institution: University of Maryland, College Park

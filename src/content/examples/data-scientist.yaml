@@ -1,0 +1,90 @@
+name: Maya Patel
+title: Senior Data Scientist
+location: San Francisco, CA 94105
+phone: "+1.415.555.0273"
+email: maya.patel@example.com
+linkedin: https://linkedin.com/in/maya-patel-example
+
+summary: |
+  Senior Data Scientist with 6 years of experience building and deploying machine learning models in production environments across e-commerce and advertising. Developed a recommendation engine that increased average order value by 18%, generating $4.2M in additional annual revenue. Skilled in Python, deep learning, NLP, and experiment design at scale.
+
+skills:
+  - category: Languages & Tools
+    skills_list:
+      - Python
+      - R
+      - SQL
+      - Jupyter
+      - Git
+  - category: ML & AI Frameworks
+    skills_list:
+      - PyTorch
+      - TensorFlow
+      - XGBoost
+      - scikit-learn
+      - Hugging Face
+      - LangChain
+  - category: Data Engineering & MLOps
+    skills_list:
+      - Apache Spark
+      - Airflow
+      - MLflow
+      - AWS SageMaker
+      - Snowflake
+      - dbt
+  - category: Methods
+    skills_list:
+      - Supervised & Unsupervised Learning
+      - NLP & Transformers
+      - Time Series Forecasting
+      - A/B Testing & Causal Inference
+      - Recommendation Systems
+
+employment:
+  - company: RetailWave Corp
+    title: Senior Data Scientist
+    start_date: May 2023
+    end_date: Present
+    description: |
+      Lead ML initiatives for the pricing and personalization team at a mid-market e-commerce platform serving 2M+ daily active users.
+    achievements:
+      - text: Built a demand forecasting model using LightGBM and time-series features, reducing inventory waste by $3.2M annually across 300+ SKUs.
+        short: Reduced inventory waste by $3.2M/year with demand forecasting across 300+ SKUs.
+      - text: Designed an NLP pipeline using transformer models to classify 50K+ customer support tickets per month, achieving 91% accuracy and reducing manual triage time by 65%.
+        short: Built an NLP pipeline classifying 50K+ tickets/month with 91% accuracy.
+      - text: Developed a real-time recommendation engine serving 2M daily users, increasing cross-sell revenue by 12%.
+        short: Boosted cross-sell revenue by 12% via a recommendation engine for 2M users.
+      - text: Established MLOps practices including MLflow tracking and automated retraining, reducing model deployment time from 2 weeks to 2 days.
+        short: Cut model deployment from 2 weeks to 2 days through MLOps standardization.
+
+  - company: Analytika
+    title: Data Scientist
+    start_date: Jun 2021
+    end_date: Apr 2023
+    description: |
+      Data scientist on the growth analytics team, building models to optimize marketing spend and improve user retention.
+    achievements:
+      - text: Developed a customer lifetime value model using survival analysis, enabling marketing to allocate $1.5M in ad spend 40% more efficiently.
+        short: Enabled 40% more efficient ad spend allocation with a CLV model.
+      - text: Built an A/B testing framework in Python that standardized experiment analysis across 5 product teams, running 30+ experiments per quarter.
+        short: Standardized A/B testing across 5 product teams running 30+ experiments per quarter.
+      - text: Created an anomaly detection system for transaction fraud using isolation forests, catching $200K in fraudulent transactions in the first month.
+        short: Detected $200K in fraud in the first month via an anomaly detection system.
+
+  - company: InsightLab
+    title: Junior Data Scientist
+    start_date: Sep 2019
+    end_date: May 2021
+    description: |
+      Supported senior data scientists on modeling projects for healthcare and fintech clients. Focused on feature engineering and model evaluation.
+    achievements:
+      - text: Built a patient readmission risk model using gradient-boosted trees, achieving an AUC of 0.87 and enabling early intervention for high-risk patients.
+        short: Achieved 0.87 AUC on a patient readmission risk model enabling early intervention.
+      - text: Automated monthly reporting pipelines with Python and SQL, saving 15 hours of manual work per week for the analytics team.
+        short: Saved 15 hours/week by automating monthly reporting pipelines.
+
+education:
+  - degree: Master of Science (MS) in Statistics
+    institution: University of California, Berkeley
+  - degree: Bachelor of Science (BS) in Mathematics
+    institution: University of Michigan

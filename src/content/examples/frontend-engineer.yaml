@@ -1,0 +1,88 @@
+name: Taylor Kim
+title: Senior Frontend Engineer
+location: Portland, OR 97201
+phone: "+1.503.555.0235"
+email: taylor.kim@example.com
+linkedin: https://linkedin.com/in/taylor-kim-example
+
+summary: |
+  Senior Frontend Engineer with 7 years of experience building responsive, accessible, and performant web applications. Expert in React, TypeScript, and design systems. Led a design system adoption that reduced UI development time by 40% and improved accessibility scores by 55%. Passionate about developer experience, web performance, and inclusive design.
+
+skills:
+  - category: Core Technologies
+    skills_list:
+      - TypeScript
+      - JavaScript (ES6+)
+      - HTML5
+      - CSS3
+      - Sass
+  - category: Frameworks & Libraries
+    skills_list:
+      - React
+      - Next.js
+      - Redux
+      - TanStack Query
+      - Tailwind CSS
+      - Storybook
+  - category: Testing & Quality
+    skills_list:
+      - Jest
+      - Playwright
+      - Cypress
+      - Vitest
+      - Lighthouse CI
+  - category: Tooling & Platforms
+    skills_list:
+      - Webpack
+      - Vite
+      - npm
+      - GitHub Actions
+      - Vercel
+      - Netlify
+
+employment:
+  - company: PixelSpring Design
+    title: Senior Frontend Engineer
+    start_date: Apr 2021
+    end_date: Present
+    description: |
+      Frontend lead for a SaaS design collaboration platform with 100K+ monthly active users. Drive architecture decisions, performance budgets, and accessibility standards.
+    achievements:
+      - text: Architected and shipped a component library with 80+ accessible React components using Storybook and Tailwind CSS, adopted by 4 product teams and reducing UI development time by 40%.
+        short: Built an 80-component design system that reduced UI dev time by 40% across 4 teams.
+      - text: Improved Lighthouse performance scores from 52 to 94 by implementing code splitting, lazy loading, and image optimization, reducing bounce rate by 18%.
+        short: Boosted Lighthouse scores from 52 to 94, reducing bounce rate by 18%.
+      - text: Led accessibility initiative achieving WCAG 2.1 AA compliance across the entire product, adding screen reader support and keyboard navigation to 200+ views.
+        short: Achieved WCAG 2.1 AA compliance across 200+ product views.
+      - text: Migrated the frontend build system from Webpack to Vite, reducing cold build times from 45 seconds to under 3 seconds and improving developer satisfaction scores by 35%.
+        short: Reduced build times from 45s to under 3s by migrating to Vite.
+
+  - company: ShopStream
+    title: Frontend Engineer
+    start_date: Aug 2018
+    end_date: Mar 2021
+    description: |
+      Frontend engineer on the customer experience team for an e-commerce platform with 5M monthly visitors.
+    achievements:
+      - text: Rebuilt the product listing page with virtual scrolling and optimized re-renders, reducing page load time from 4.2s to 1.1s and increasing conversion by 7%.
+        short: Cut product listing load from 4.2s to 1.1s, increasing conversion by 7%.
+      - text: Implemented an offline-first checkout flow using service workers and IndexedDB, enabling 95% of customers to complete purchases even with intermittent connectivity.
+        short: Built offline-first checkout enabling 95% purchase completion with spotty connectivity.
+      - text: Introduced TypeScript to the frontend codebase, reducing production bugs by 30% over 6 months and improving developer onboarding time by 2 weeks.
+        short: Reduced bugs by 30% and improved onboarding by 2 weeks via TypeScript adoption.
+
+  - company: WebCraft Agency
+    title: Junior Frontend Developer
+    start_date: Feb 2017
+    end_date: Jul 2018
+    description: |
+      Developed responsive marketing sites and web applications for agency clients across healthcare, finance, and e-commerce.
+    achievements:
+      - text: Delivered 12 client websites on time and under budget using React and WordPress, directly contributing to $500K in agency revenue.
+        short: Delivered 12 client websites contributing $500K in agency revenue.
+      - text: Built a reusable component library for the agency, reducing project bootstrap time by 50% across 10+ client engagements.
+        short: Built a reusable component library cutting project bootstrap time by 50%.
+
+education:
+  - degree: Bachelor of Arts (BA) in Digital Media
+    institution: University of Oregon
