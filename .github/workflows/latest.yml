@@ -1,0 +1,61 @@
+name: Update Latest Resume Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - '.github/workflows/latest.yml'
+
+jobs:
+  update-latest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Generator Image
+        run: ./build.sh
+
+      - name: Generate All Resumes
+        run: |
+          mkdir -p output
+          docker run --rm -v "$(pwd):/app" resume-generator
+          sudo chown -R $USER:$USER output
+
+      - name: Prepare Assets for Release
+        run: |
+          mkdir -p release_assets
+          
+          # Modern Handout
+          for ext in html pdf docx md txt; do
+            cp "output/modern/thomas-ehardt.$ext" "release_assets/thomas-ehardt-modern.$ext"
+          done
+          
+          # ATS Version
+          for ext in html pdf docx md txt; do
+            cp "output/ats/thomas-ehardt.$ext" "release_assets/thomas-ehardt-ats.$ext"
+          done
+
+      - name: Update Latest Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: "Latest Resume"
+          files: release_assets/*
+          body: |
+            This release contains the most up-to-date version of my resume, automatically generated from the `main` branch.
+            
+            **Last Updated:** ${{ github.event.head_commit.timestamp }}
+            **Commit:** [`${{ github.sha }}`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+            
+            Standardized Versions (Available in PDF, DOCX, HTML, MD, and TXT):
+            - **Modern Handout**: Optimized for human reviewers.
+            - **ATS Version**: Optimized for automated systems.
+          draft: false
+          prerelease: false
+          make_latest: false # We keep the versioned tags as the "official" latest release in the UI

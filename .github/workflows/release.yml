@@ -1,0 +1,54 @@
+name: Generate and Release Resume
+
+on:
+  push:
+    tags:
+      - '*' # Triggers on any tag push
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Generator Image
+        run: ./build.sh
+
+      - name: Generate All Resumes
+        run: |
+          mkdir -p output
+          docker run --rm -v "$(pwd):/app" resume-generator
+          # Fix permissions because Docker runs as root and the runner user needs access
+          sudo chown -R $USER:$USER output
+
+      - name: Prepare Assets for Release
+        run: |
+          mkdir -p release_assets
+          
+          # Modern Handout
+          for ext in html pdf docx md txt; do
+            cp "output/modern/thomas-ehardt.$ext" "release_assets/thomas-ehardt-modern.$ext"
+          done
+          
+          # ATS Version
+          for ext in html pdf docx md txt; do
+            cp "output/ats/thomas-ehardt.$ext" "release_assets/thomas-ehardt-ats.$ext"
+          done
+
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release_assets/*
+          name: Resume Release ${{ github.ref_name }}
+          body: |
+            Automated resume generation for version ${{ github.ref_name }}.
+            
+            Standardized Versions (Available in PDF, DOCX, HTML, MD, and TXT):
+            - **Modern Handout**: Optimized for human reviewers.
+            - **ATS Version**: Optimized for automated systems.
+          draft: false
+          prerelease: false

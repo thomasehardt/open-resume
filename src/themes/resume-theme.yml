@@ -1,0 +1,21 @@
+extends: default
+page:
+  margin: [0.75in, 0.75in, 1in, 0.75in]
+footer:
+  font_size: 8
+  font_color: #666666
+  border_color: #DDDDDD
+  border_width: 0.25
+  padding: [5, 0, 0, 0]
+  recto:
+    columns: "<75% >25%"
+    left:
+      content: "Spring Hill, TN 37174 · thomas@ehardt.net · +1.615.852.8611 · linkedin.com/in/thomas-ehardt"
+    right:
+      content: "Page {page-number} of {page-count}"
+  verso:
+    columns: "<75% >25%"
+    left:
+      content: "Spring Hill, TN 37174 · thomas@ehardt.net · +1.615.852.8611 · linkedin.com/in/thomas-ehardt"
+    right:
+      content: "Page {page-number} of {page-count}"

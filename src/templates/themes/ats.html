@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ resume.name }} - {{ resume.title }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        @page {
+            margin: 0.5in;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
+            line-height: 1.3;
+            color: #000;
+            max-width: 7.5in;
+            margin: 0 auto;
+            padding: 0.1in;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.8em;
+            padding-bottom: 0.4em;
+            border-bottom: 1px solid #000;
+        }
+        .header h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            margin-bottom: 0.1em;
+            text-transform: uppercase;
+        }
+        .header .title {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-bottom: 0.2em;
+        }
+        .header .contact {
+            font-size: 9pt;
+        }
+        .header .contact span {
+            margin: 0 0.3em;
+        }
+        .header .contact a {
+            color: #000;
+            text-decoration: none;
+        }
+        
+        h2 {
+            font-size: 11pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 0.8em;
+            margin-bottom: 0.3em;
+            border-bottom: 0.5px solid #000;
+        }
+        
+        .job {
+            margin-bottom: 0.6em;
+            page-break-inside: avoid;
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+        .job h3 {
+            font-size: 10pt;
+            margin: 0;
+        }
+        .job .dates {
+            font-size: 10pt;
+        }
+        .job .title-em {
+            font-size: 10pt;
+            font-style: italic;
+            margin-bottom: 0.15em;
+        }
+        .job p {
+            margin-bottom: 0.2em;
+        }
+        .job ul {
+            margin: 0 0 0.4em 1.2em;
+        }
+        .job ul li {
+            margin-bottom: 0.1em;
+        }
+        
+        .skills-block {
+            font-size: 10pt;
+            line-height: 1.4;
+        }
+        .skills-block strong {
+            font-weight: bold;
+        }
+        
+        .education-item {
+            font-size: 10pt;
+            margin-bottom: 0.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ resume.name }}</h1>
+        <div class="title">{{ resume.title }}</div>
+        <div class="contact">
+            {{ resume.location }} <span>|</span> {{ resume.phone }} <span>|</span> <a href="mailto:{{ resume.email }}">{{ resume.email }}</a> <span>|</span> <a href="{{ resume.linkedin }}">{{ resume.linkedin | replace('https://', '') }}</a>
+        </div>
+    </div>
+
+    <h2>Summary</h2>
+    <p>{{ resume.summary }}</p>
+
+    <h2>Professional Experience</h2>
+    {% for job in resume.employment %}
+    <div class="job">
+        <div class="job-header">
+            <h3>{{ job.company }}</h3>
+            {% if job.start_date %}<span class="dates">{{ job.start_date }} - {{ job.end_date }}</span>{% endif %}
+        </div>
+        <div class="title-em">{{ job.title }}</div>
+        <p>{{ job.description }}</p>
+        {% if job.achievements %}
+        <ul>
+            {% for achievement in job.achievements %}
+            <li>{% if short and achievement.short %}{{ achievement.short }}{% else %}{{ achievement.text }}{% endif %}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    <h2>Technical Skills</h2>
+    <div class="skills-block">
+        {% for skill_group in resume.skills %}
+        <strong>{{ skill_group.category }}</strong>: {{ skill_group.skills_list|join(', ') }}{% if not loop.last %} | {% endif %}{% endfor %}
+    </div>
+
+    <h2>Education</h2>
+    {% for edu in resume.education %}
+    <div class="education-item">
+        <strong>{{ edu.degree }}</strong>, {{ edu.institution }}
+    </div>
+    {% endfor %}
+</body>
+</html>
