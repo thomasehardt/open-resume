@@ -14,7 +14,40 @@ linkedin: https://linkedin.com/in/jane-doe
 
 ## Usage
 
-### Docker (recommended)
+### Quick start (recommended)
+
+Place a `resume.yaml` in this directory and run:
+
+```bash
+./resume
+```
+
+This generates both themes (`ats/` and `modern/`), each in HTML, PDF, DOCX, MD, and TXT in `output/`.
+
+Single theme:
+
+```bash
+./resume modern
+./resume ats
+```
+
+Other commands:
+
+```bash
+./resume cover-letter   # generate cover letter
+./resume themes         # list available themes
+./resume build          # build Docker image locally
+./resume clean          # remove output/
+./resume help           # show full help
+```
+
+Customize via environment variables:
+
+```bash
+DATA=my-resume.yaml OUTPUT=dist ./resume
+```
+
+### Docker directly
 
 ```bash
 docker run --rm \
@@ -24,39 +57,21 @@ docker run --rm \
   -d /app/resume.yaml
 ```
 
-This generates both themes (`ats/` and `modern/`), each in HTML, PDF, DOCX, MD, and TXT.
-
 ### Docker Compose
 
 ```bash
-# 1. Create resume.yaml in your project directory
-# 2. Run:
 docker compose up
 ```
 
-Or use the provided `docker-compose.yml` (edit to match your file paths).
+Customize paths in `docker-compose.yml` as needed.
 
-### Generate a specific theme
-
-```bash
-docker run --rm \
-  -v $(pwd)/resume.yaml:/app/resume.yaml \
-  -v $(pwd)/output:/app/output \
-  ghcr.io/open-resume/resume-generator \
-  -d /app/resume.yaml -t modern
-```
-
-### List available themes
+### Custom themes
 
 ```bash
-docker run --rm ghcr.io/open-resume/resume-generator --list-themes
-```
+# via the script
+THEMES_DIR=my-themes ./resume modern
 
-### Use custom themes
-
-Mount a directory of `.html` theme templates:
-
-```bash
+# or via Docker directly
 docker run --rm \
   -v $(pwd)/resume.yaml:/app/resume.yaml \
   -v $(pwd)/output:/app/output \
@@ -66,27 +81,6 @@ docker run --rm \
 ```
 
 See [THEMES.md](THEMES.md) for details on creating custom themes.
-
-### Also generate a cover letter
-
-```bash
-docker run --rm \
-  -v $(pwd)/resume.yaml:/app/resume.yaml \
-  -v $(pwd)/output:/app/output \
-  ghcr.io/open-resume/resume-generator \
-  -d /app/resume.yaml --cover-letter
-```
-
-### Generate cover letter standalone
-
-```bash
-docker run --rm --entrypoint python3 \
-  -v $(pwd)/resume.yaml:/app/resume.yaml \
-  -v $(pwd)/output:/app/output \
-  ghcr.io/open-resume/resume-generator \
-  src/scripts/generate_cover_letter.py \
-  -d /app/resume.yaml -o /app/output/cover-letter.md
-```
 
 ---
 

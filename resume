@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+set -e
+
+IMAGE="${IMAGE:-ghcr.io/open-resume/resume-generator}"
+DATA="${DATA:-resume.yaml}"
+OUTPUT="${OUTPUT:-output}"
+THEMES_DIR="${THEMES_DIR:-}"
+THEMES_MOUNT=""
+THEMES_ARG=""
+
+if [ -n "$THEMES_DIR" ]; then
+  THEMES_MOUNT="-v $(pwd)/$THEMES_DIR:/app/custom/themes"
+  THEMES_ARG="--custom-themes-dir /app/custom/themes"
+fi
+
+case "${1:-}" in
+  build)
+    docker build -t resume-generator .
+    ;;
+  themes|--list-themes)
+    docker run --rm "$IMAGE" --list-themes
+    ;;
+  cover-letter)
+    shift
+    mkdir -p "$OUTPUT"
+    # shellcheck disable=SC2086
+    docker run --rm \
+      -v "$(pwd)/$DATA:/app/resume.yaml" \
+      -v "$(pwd)/$OUTPUT:/app/output" \
+      $THEMES_MOUNT \
+      --entrypoint python3 \
+      "$IMAGE" \
+      src/scripts/generate_cover_letter.py \
+      -d /app/resume.yaml -o /app/output/cover-letter.md
+    ;;
+  clean)
+    rm -rf "$OUTPUT"
+    ;;
+  help|--help|-h)
+    echo "Usage: ./resume [command]"
+    echo ""
+    echo "Commands:"
+    echo "  (none)        Generate all themes (default)"
+    echo "  modern        Generate modern theme only"
+    echo "  ats           Generate ATS theme only"
+    echo "  cover-letter  Generate cover letter"
+    echo "  themes        List available themes"
+    echo "  build         Build Docker image locally"
+    echo "  clean         Remove output/"
+    echo "  help          Show this message"
+    echo ""
+    echo "Environment variables:"
+    echo "  IMAGE      Docker image (default: ghcr.io/open-resume/resume-generator)"
+    echo "  DATA       Resume YAML file (default: resume.yaml)"
+    echo "  OUTPUT     Output directory (default: output)"
+    echo "  THEMES_DIR Custom themes directory (optional)"
+    ;;
+  modern|ats)
+    THEME="$1"
+    mkdir -p "$OUTPUT"
+    # shellcheck disable=SC2086
+    docker run --rm \
+      -v "$(pwd)/$DATA:/app/resume.yaml" \
+      -v "$(pwd)/$OUTPUT:/app/output" \
+      $THEMES_MOUNT \
+      "$IMAGE" \
+      -d /app/resume.yaml -t "$THEME" $THEMES_ARG
+    ;;
+  *)
+    mkdir -p "$OUTPUT"
+    # shellcheck disable=SC2086
+    docker run --rm \
+      -v "$(pwd)/$DATA:/app/resume.yaml" \
+      -v "$(pwd)/$OUTPUT:/app/output" \
+      $THEMES_MOUNT \
+      "$IMAGE" \
+      -d /app/resume.yaml $THEMES_ARG
+    ;;
+esac
