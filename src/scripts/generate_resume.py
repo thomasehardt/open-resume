@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-import os
-import sys
-import subprocess
 import argparse
+import os
+import subprocess
+import sys
+
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-from weasyprint import HTML as WeasyHTML
-
+from weasyprint import HTML
 
 BUILTIN_THEMES_DIR = "src/templates/themes"
 BUILTIN_TEMPLATES_DIR = "src/templates"
@@ -14,7 +14,7 @@ DEFAULT_DATA = "src/content/examples/senior-backend-engineer.yaml"
 
 
 def load_resume_data(data_file):
-    with open(data_file, "r") as f:
+    with open(data_file) as f:
         return yaml.safe_load(f)
 
 
@@ -52,7 +52,7 @@ def generate_html(data, theme, templates_dir, theme_dirs, short=False):
 
 
 def generate_pdf(input_html, output_path):
-    pdf_doc = WeasyHTML(input_html).write_pdf()
+    pdf_doc = HTML(input_html).write_pdf()
     with open(output_path, "wb") as f:
         f.write(pdf_doc)
     return output_path
@@ -60,7 +60,7 @@ def generate_pdf(input_html, output_path):
 
 def generate_docx(input_html, output_path):
     temp_md = output_path.replace(".docx", ".md")
-    with open(input_html, "r") as f:
+    with open(input_html) as f:
         html_content = f.read()
 
     from bs4 import BeautifulSoup
@@ -68,9 +68,7 @@ def generate_docx(input_html, output_path):
     soup = BeautifulSoup(html_content, "html.parser")
 
     md_content = ""
-    for elem in soup.find_all(
-        ["h1", "h2", "h3", "h4", "p", "ul", "ol", "li", "strong", "em"]
-    ):
+    for elem in soup.find_all(["h1", "h2", "h3", "h4", "p", "ul", "ol", "li", "strong", "em"]):
         text = elem.get_text().strip()
         if elem.name == "h1":
             md_content += f"# {text}\n\n"
@@ -101,9 +99,10 @@ def generate_docx(input_html, output_path):
 
 def generate_md(input_html, output_path):
     import re
-    from bs4 import BeautifulSoup, Tag, NavigableString
 
-    with open(input_html, "r") as f:
+    from bs4 import BeautifulSoup, NavigableString, Tag
+
+    with open(input_html) as f:
         html_content = f.read()
 
     soup = BeautifulSoup(html_content, "html.parser")
@@ -113,9 +112,7 @@ def generate_md(input_html, output_path):
             return True
         if tag.find(["h1", "h2", "h3", "h4", "p", "ul", "ol", "table"]) is not None:
             return True
-        div_count = sum(
-            1 for c in tag.children if isinstance(c, Tag) and c.name == "div"
-        )
+        div_count = sum(1 for c in tag.children if isinstance(c, Tag) and c.name == "div")
         return div_count >= 2
 
     def convert(el):
@@ -246,17 +243,20 @@ def main():
 
     parser = argparse.ArgumentParser(description="Generate resume in multiple formats and themes")
     parser.add_argument(
-        "-d", "--data",
+        "-d",
+        "--data",
         default=DEFAULT_DATA,
         help="Path to YAML data file",
     )
     parser.add_argument(
-        "-o", "--output",
+        "-o",
+        "--output",
         default="output",
         help="Output directory",
     )
     parser.add_argument(
-        "-t", "--theme",
+        "-t",
+        "--theme",
         action="append",
         dest="themes",
         help="Theme(s) to generate (can be specified multiple times, or comma-separated). Default: all available themes.",
@@ -296,7 +296,6 @@ def main():
     if args.list_themes:
         print("Available themes:")
         for name in sorted(available.keys()):
-            source = available[name]
             print(f"  {name}")
         return
 
@@ -307,7 +306,9 @@ def main():
 
     data = load_resume_data(data_file)
 
-    output_base = args.output if os.path.isabs(args.output) else os.path.join(project_root, args.output)
+    output_base = (
+        args.output if os.path.isabs(args.output) else os.path.join(project_root, args.output)
+    )
 
     themes_to_generate = args.themes
     if themes_to_generate:
@@ -323,17 +324,25 @@ def main():
             print(f"Warning: Theme '{theme}' not found. Skipping.")
             continue
         is_short = theme == "modern"
-        generate_single_theme(data, theme, output_base, builtin_templates_dir, theme_dirs, short=is_short)
+        generate_single_theme(
+            data, theme, output_base, builtin_templates_dir, theme_dirs, short=is_short
+        )
 
     print(f"\nDone! Generated files in {output_base}/")
 
     if args.cover_letter:
         cover_letter_script = os.path.join(script_dir, "generate_cover_letter.py")
         subprocess.run(
-            [sys.executable, cover_letter_script,
-             "-d", data_file,
-             "-t", os.path.join(project_root, args.cover_letter_template),
-             "-o", os.path.join(output_base, "cover-letter.md")],
+            [
+                sys.executable,
+                cover_letter_script,
+                "-d",
+                data_file,
+                "-t",
+                os.path.join(project_root, args.cover_letter_template),
+                "-o",
+                os.path.join(output_base, "cover-letter.md"),
+            ],
             check=True,
         )
 

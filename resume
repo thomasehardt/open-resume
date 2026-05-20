@@ -14,6 +14,16 @@ if [ -n "$THEMES_DIR" ]; then
 fi
 
 case "${1:-}" in
+  lint)
+    docker run --rm -v "$(pwd):/app" --entrypoint "" python:3.12-slim \
+      sh -c "pip install ruff -q && ruff check /app/src && ruff format --check /app/src && echo 'All clean'"
+    ;;
+
+  format)
+    docker run --rm -v "$(pwd):/app" --entrypoint "" python:3.12-slim \
+      sh -c "pip install ruff -q && ruff format /app/src"
+    ;;
+
   build)
     docker build -t resume-generator .
     ;;
@@ -45,6 +55,8 @@ case "${1:-}" in
     echo "  ats           Generate ATS theme only"
     echo "  cover-letter  Generate cover letter"
     echo "  themes        List available themes"
+    echo "  lint          Check code style (ruff)"
+    echo "  format        Auto-format code (ruff)"
     echo "  build         Build Docker image locally"
     echo "  clean         Remove output/"
     echo "  help          Show this message"

@@ -1,9 +1,8 @@
-name: Generate and Release Resume
+name: Resume Release
 
 on:
-  push:
-    tags:
-      - '*' # Triggers on any tag push
+  release:
+    types: [published]
 
 jobs:
   build-and-release:
@@ -35,16 +34,7 @@ jobs:
           mkdir -p release_assets
           find output -type f \( -name "*.html" -o -name "*.pdf" -o -name "*.docx" -o -name "*.md" -o -name "*.txt" \) -exec cp {} release_assets/ \;
 
-      - name: Create Release and Upload Assets
+      - name: Upload Assets to Release
         uses: softprops/action-gh-release@v2
         with:
           files: release_assets/*
-          name: Resume Release ${{ github.ref_name }}
-          body: |
-            Automated resume generation for version ${{ github.ref_name }}.
-
-            Generated files (available in HTML, PDF, DOCX, MD, and TXT):
-            - **ats/**: ATS-optimized version
-            - **modern/**: Modern handout version
-          draft: false
-          prerelease: false

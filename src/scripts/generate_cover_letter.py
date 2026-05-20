@@ -1,28 +1,32 @@
 #!/usr/bin/env python3
 """Generate cover letter from template using resume data."""
 
+import argparse
 import os
 import sys
-import argparse
 from datetime import datetime
-from jinja2 import Template
+
 import yaml
+from jinja2 import Template
 
 
 def main():
     parser = argparse.ArgumentParser(description="Generate cover letter")
     parser.add_argument(
-        "-d", "--data",
+        "-d",
+        "--data",
         default="src/content/examples/senior-backend-engineer.yaml",
         help="Path to YAML data file",
     )
     parser.add_argument(
-        "-o", "--output",
+        "-o",
+        "--output",
         default="output/cover-letter.md",
         help="Output file",
     )
     parser.add_argument(
-        "-t", "--template",
+        "-t",
+        "--template",
         default="src/templates/cover-letter.md",
         help="Template file",
     )
@@ -44,15 +48,13 @@ def main():
     with open(template_file) as f:
         template = Template(f.read())
 
-    output_path = args.output if os.path.isabs(args.output) else os.path.join(project_root, args.output)
+    output_path = (
+        args.output if os.path.isabs(args.output) else os.path.join(project_root, args.output)
+    )
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     with open(output_path, "w") as f:
-        f.write(
-            template.render(
-                resume=resume, current_date=datetime.now().strftime("%B %d, %Y")
-            )
-        )
+        f.write(template.render(resume=resume, current_date=datetime.now().strftime("%B %d, %Y")))
 
     print(f"Generated: {output_path}")
     print("Edit the bracketed placeholder fields before using.")

@@ -1,4 +1,4 @@
-name: Build and Publish Docker Image
+name: Docker
 
 on:
   push:
@@ -6,6 +6,8 @@ on:
       - main
     tags:
       - 'v*'
+  release:
+    types: [published]
   pull_request:
     branches:
       - main

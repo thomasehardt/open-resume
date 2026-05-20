@@ -105,30 +105,33 @@ Example files are in `src/content/examples/`:
 
 ---
 
-## Two Ways to Use This Project
+## Releases
 
-### 1. Fork and customize
+This project uses [Release Please](https://github.com/googleapis/release-please) for automated versioning based on [Conventional Commits](https://www.conventionalcommits.org/).
 
-Fork the repository, replace `src/content/examples/*.yaml` with your own resume data, and push. The GitHub Actions workflows will automatically generate resume files and attach them to a GitHub Release on every push to `main` or tag push.
+### How it works
 
-```bash
-git tag v1.0.0
-git push origin v1.0.0
+1. Commit to `main` using conventional commit messages: `feat:`, `fix:`, `docs:`, `chore:`, etc.
+2. Release Please creates or updates a release PR as commits accumulate.
+3. Merge the release PR to publish a new GitHub Release with a version tag (e.g. `v1.2.0`).
+4. On release, workflows build and publish a versioned Docker image to GHCR and attach generated resume files.
+
+### Commit message conventions
+
+```
+feat: add support for custom footers
+fix: correct page margin in modern theme
+docs: update theme creation guide
+chore: bump dependencies
 ```
 
-The release workflow produces a GitHub Release with all generated formats attached.
+### Forking
 
-A Docker image is also published to GHCR for your fork automatically via the `docker-publish.yml` workflow.
+If you fork this repo for your own resume:
 
-### 2. Use the Docker image directly
-
-Pull the pre-built image and use it with your own data -- no need to clone or fork.
-
-```bash
-docker pull ghcr.io/thomasehardt/open-resume:latest
-```
-
-See the [Usage](#usage) section above for examples.
+1. Replace the example YAML files in `src/content/examples/` with your resume data.
+2. The `latest.yml` workflow generates your resume on every push to `main`.
+3. When you're ready for a release, merge the Release Please PR — your resume files are attached to the GitHub Release.
 
 ---
 
@@ -186,6 +189,7 @@ python3 src/scripts/generate_resume.py
 
 | Workflow | Trigger | Action |
 |----------|---------|--------|
-| `docker-publish.yml` | Push to main, tag `v*`, or PR | Builds and publishes Docker image to GHCR |
-| `latest.yml` | Push to main (content changes) | Generates resume and updates `latest` release |
-| `release.yml` | Any tag push | Generates resume and creates a versioned release |
+| `release-please.yml` | Push to `main` | Creates/updates release PR, publishes release on merge |
+| `docker-publish.yml` | Push to `main`, release published, PR | Builds and publishes Docker image to GHCR |
+| `latest.yml` | Push to `main` (content changes) | Generates resume and updates `latest` release |
+| `release.yml` | Release published | Generates resume artifacts and attaches to the release |
