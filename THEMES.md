@@ -64,7 +64,7 @@ docker run --rm \
   -v $(pwd)/resume.yaml:/app/resume.yaml \
   -v $(pwd)/output:/app/output \
   -v $(pwd)/my-themes:/app/custom/themes \
-  ghcr.io/open-resume/resume-generator \
+  ghcr.io/thomasehardt/open-resume \
   -d /app/resume.yaml \
   -o /app/output \
   -t compact
@@ -77,7 +77,7 @@ Custom themes override built-in themes of the same name.
 ```yaml
 services:
   resume-generator:
-    image: ghcr.io/open-resume/resume-generator
+    image: ghcr.io/thomasehardt/open-resume
     volumes:
       - ./resume.yaml:/app/resume.yaml
       - ./output:/app/output

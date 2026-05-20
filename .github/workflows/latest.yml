@@ -25,11 +25,13 @@ jobs:
       - name: Generate All Resumes
         run: |
           mkdir -p output
+          DATA_FILE=$(ls src/content/*.yaml 2>/dev/null | head -1 || ls src/content/examples/*.yaml 2>/dev/null | head -1)
+          echo "Using data file: $DATA_FILE"
           docker run --rm \
             -v "$(pwd)/src:/app/src" \
             -v "$(pwd)/output:/app/output" \
             resume-generator \
-            -d /app/src/content/$(ls src/content/*.yaml src/content/examples/*.yaml 2>/dev/null | head -1 | xargs basename)
+            -d "/app/src/content/$(basename "$DATA_FILE")"
           sudo chown -R $USER:$USER output
 
       - name: Prepare Assets for Release

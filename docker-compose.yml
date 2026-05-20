@@ -1,6 +1,6 @@
 services:
   resume-generator:
-    image: ghcr.io/open-resume/resume-generator:latest
+    image: ghcr.io/thomasehardt/open-resume:latest
     build: .
     volumes:
       # Mount your resume data file

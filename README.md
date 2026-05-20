@@ -53,7 +53,7 @@ DATA=my-resume.yaml OUTPUT=dist ./resume
 docker run --rm \
   -v $(pwd)/resume.yaml:/app/resume.yaml \
   -v $(pwd)/output:/app/output \
-  ghcr.io/open-resume/resume-generator \
+  ghcr.io/thomasehardt/open-resume \
   -d /app/resume.yaml
 ```
 
@@ -76,7 +76,7 @@ docker run --rm \
   -v $(pwd)/resume.yaml:/app/resume.yaml \
   -v $(pwd)/output:/app/output \
   -v $(pwd)/my-themes:/app/custom/themes \
-  ghcr.io/open-resume/resume-generator \
+  ghcr.io/thomasehardt/open-resume \
   -d /app/resume.yaml -t compact
 ```
 
@@ -125,7 +125,7 @@ A Docker image is also published to GHCR for your fork automatically via the `do
 Pull the pre-built image and use it with your own data -- no need to clone or fork.
 
 ```bash
-docker pull ghcr.io/open-resume/resume-generator:latest
+docker pull ghcr.io/thomasehardt/open-resume:latest
 ```
 
 See the [Usage](#usage) section above for examples.

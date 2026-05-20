@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-IMAGE="${IMAGE:-ghcr.io/open-resume/resume-generator}"
+IMAGE="${IMAGE:-ghcr.io/thomasehardt/open-resume}"
 DATA="${DATA:-resume.yaml}"
 OUTPUT="${OUTPUT:-output}"
 THEMES_DIR="${THEMES_DIR:-}"
@@ -50,7 +50,7 @@ case "${1:-}" in
     echo "  help          Show this message"
     echo ""
     echo "Environment variables:"
-    echo "  IMAGE      Docker image (default: ghcr.io/open-resume/resume-generator)"
+    echo "  IMAGE      Docker image (default: ghcr.io/thomasehardt/open-resume)"
     echo "  DATA       Resume YAML file (default: resume.yaml)"
     echo "  OUTPUT     Output directory (default: output)"
     echo "  THEMES_DIR Custom themes directory (optional)"
