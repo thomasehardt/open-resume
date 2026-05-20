@@ -143,4 +143,4 @@ The template receives these variables:
 
 - **ATS compatibility**: Single column, no headers/footers with critical content, standard fonts (Arial, Times New Roman), 10-12pt font size, no multi-column layouts.
 - **Human review**: Two-column layouts are acceptable. Use visual hierarchy, color accents, and whitespace. Stay concise -- a senior engineer should aim for 1-2 pages.
-- **Print output**: Use `@page` CSS rules to set print margins. WeasyPrint (the PDF renderer) supports most modern CSS but not所有 features -- test your theme by generating a PDF.
+- **Print output**: Use `@page` CSS rules to set print margins. WeasyPrint (the PDF renderer) supports most modern CSS but not all features -- test your theme by generating a PDF.
