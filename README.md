@@ -102,6 +102,44 @@ Example files are in `src/content/examples/`:
 | Data Engineer | `data-engineer.yaml` |
 | UX Designer | `ux-designer.yaml` |
 
+### Example: YAML to Output
+
+A simplified input:
+
+```yaml
+name: Alex Chen
+title: Senior Backend Engineer
+location: Seattle, WA 98101
+phone: "+1.206.555.0142"
+email: alex.chen@example.com
+linkedin: https://linkedin.com/in/alex-chen-example
+
+summary: |
+  Senior Backend Engineer with 8+ years building distributed systems
+  at scale. Led migration of a monolithic platform to microservices,
+  reducing API latency by 40%.
+
+employment:
+  - company: VeloCore Technologies
+    title: Senior Backend Engineer
+    start_date: Jan 2022
+    end_date: Present
+    description: |
+      Architect and lead backend development for a real-time logistics
+      platform processing 2M+ shipments daily.
+    achievements:
+      - text: Led decomposition of a monolith into 8 gRPC microservices, reducing p99 latency from 420ms to 250ms and cutting infrastructure costs by $1.2M per year.
+        short: Cut latency by 40% and infrastructure costs by $1.2M/year.
+      - text: Designed a real-time surge pricing engine processing 50K events per second using Kafka and Redis, maintaining 99.97% uptime over 18 months.
+        short: Built a real-time pricing engine processing 50K events/sec.
+```
+
+Renders as:
+
+| `ats` theme | `modern` theme |
+|:---:|:---:|
+| ![ATS theme output](docs/ats-screenshot.png) | ![Modern theme output](docs/modern-screenshot.png) |
+
 ---
 
 ## Releases

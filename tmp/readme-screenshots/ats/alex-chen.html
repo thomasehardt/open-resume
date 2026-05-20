@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chen - Senior Backend Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        @page {
+            margin: 0.5in;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
+            line-height: 1.3;
+            color: #000;
+            max-width: 7.5in;
+            margin: 0 auto;
+            padding: 0.1in;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0.8em;
+            padding-bottom: 0.4em;
+            border-bottom: 1px solid #000;
+        }
+        .header h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            margin-bottom: 0.1em;
+            text-transform: uppercase;
+        }
+        .header .title {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-bottom: 0.2em;
+        }
+        .header .contact {
+            font-size: 9pt;
+        }
+        .header .contact span {
+            margin: 0 0.3em;
+        }
+        .header .contact a {
+            color: #000;
+            text-decoration: none;
+        }
+        
+        h2 {
+            font-size: 11pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 0.8em;
+            margin-bottom: 0.3em;
+            border-bottom: 0.5px solid #000;
+        }
+        
+        .job {
+            margin-bottom: 0.6em;
+            page-break-inside: avoid;
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+        .job h3 {
+            font-size: 10pt;
+            margin: 0;
+        }
+        .job .dates {
+            font-size: 10pt;
+        }
+        .job .title-em {
+            font-size: 10pt;
+            font-style: italic;
+            margin-bottom: 0.15em;
+        }
+        .job p {
+            margin-bottom: 0.2em;
+        }
+        .job ul {
+            margin: 0 0 0.4em 1.2em;
+        }
+        .job ul li {
+            margin-bottom: 0.1em;
+        }
+        
+        .skills-block {
+            font-size: 10pt;
+            line-height: 1.4;
+        }
+        .skills-block strong {
+            font-weight: bold;
+        }
+        
+        .education-item {
+            font-size: 10pt;
+            margin-bottom: 0.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Alex Chen</h1>
+        <div class="title">Senior Backend Engineer</div>
+        <div class="contact">
+            Seattle, WA 98101 <span>|</span> +1.206.555.0142 <span>|</span> <a href="mailto:alex.chen@example.com">alex.chen@example.com</a> <span>|</span> <a href="https://linkedin.com/in/alex-chen-example">linkedin.com/in/alex-chen-example</a>
+        </div>
+    </div>
+
+    <h2>Summary</h2>
+    <p>Senior Backend Engineer with 8+ years building distributed systems at scale. Led migration of a monolithic platform to microservices, reducing API latency by 40% and improving deployment frequency by 3x. Deep expertise in Python, Go, and Kubernetes. Passionate about system reliability, developer tooling, and mentoring engineers through structured growth programs.
+</p>
+
+    <h2>Professional Experience</h2>
+    
+    <div class="job">
+        <div class="job-header">
+            <h3>VeloCore Technologies</h3>
+            <span class="dates">Jan 2022 - Present</span>
+        </div>
+        <div class="title-em">Senior Backend Engineer</div>
+        <p>Architect and lead backend development for a real-time logistics platform processing 2M+ shipments daily. Own core routing, pricing, and notification services in a microservice ecosystem.
+</p>
+        
+        <ul>
+            
+            <li>Led decomposition of a monolith ride-matching engine into 8 gRPC microservices, reducing p99 latency from 420ms to 250ms and cutting infrastructure costs by $1.2M per year.</li>
+            
+            <li>Designed and shipped a real-time surge pricing engine processing 50K events per second using Kafka and Redis, maintaining 99.97% uptime over 18 months.</li>
+            
+            <li>Mentored 4 junior engineers through structured code reviews and architecture sessions; all 4 received promotion within 14 months.</li>
+            
+            <li>Championed adoption of an internal TypeScript SDK across 3 product teams, eliminating 6,000 lines of duplicated API client code.</li>
+            
+        </ul>
+        
+    </div>
+    
+    <div class="job">
+        <div class="job-header">
+            <h3>DataStream Analytics</h3>
+            <span class="dates">Mar 2019 - Dec 2021</span>
+        </div>
+        <div class="title-em">Backend Engineer</div>
+        <p>Built and maintained data ingestion and processing pipelines for a B2B analytics platform serving 500+ enterprise customers.
+</p>
+        
+        <ul>
+            
+            <li>Designed an automated ETL pipeline ingesting 2TB of CRM events per day using Apache Spark and AWS Glue, replacing manual scripts and saving 40 engineering-hours per week.</li>
+            
+            <li>Migrated legacy authentication to OAuth 2.0 and SAML SSO, enabling enterprise sales and reducing security incidents by 80%.</li>
+            
+            <li>Reduced CI/CD pipeline runtime by 55% by parallelizing test suites and optimizing build caching in GitHub Actions.</li>
+            
+        </ul>
+        
+    </div>
+    
+    <div class="job">
+        <div class="job-header">
+            <h3>CloudBase Inc</h3>
+            <span class="dates">Jun 2017 - Feb 2019</span>
+        </div>
+        <div class="title-em">Software Engineer</div>
+        <p>Full-stack engineer on the developer tools team, building CLI tools and REST APIs for cloud infrastructure management.
+</p>
+        
+        <ul>
+            
+            <li>Developed RESTful APIs in Python and Django powering a customer dashboard used by 12,000+ enterprise accounts.</li>
+            
+            <li>Implemented full-text search across documentation and ticket systems using Elasticsearch, reducing average lookup time from 3.2 seconds to 0.4 seconds.</li>
+            
+            <li>Contributed 15 PRs to an open-source infrastructure SDK with 1,200+ GitHub stars, adding async support and type definitions.</li>
+            
+        </ul>
+        
+    </div>
+    
+
+    <h2>Technical Skills</h2>
+    <div class="skills-block">
+        
+        <strong>Languages &amp; Runtimes</strong>: Python, Go, TypeScript, Java | 
+        <strong>Infrastructure &amp; Cloud</strong>: Kubernetes, Docker, AWS, Terraform, gRPC, Apache Kafka | 
+        <strong>Data &amp; Storage</strong>: PostgreSQL, Redis, Elasticsearch, S3 | 
+        <strong>Practices</strong>: Microservice Architecture, CI/CD, Distributed Systems, Incident Response
+    </div>
+
+    <h2>Education</h2>
+    
+    <div class="education-item">
+        <strong>Bachelor of Science (BS) in Computer Science</strong>, University of Washington
+    </div>
+    
+</body>
+</html>
