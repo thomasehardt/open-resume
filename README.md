@@ -107,31 +107,26 @@ Example files are in `src/content/examples/`:
 
 ## Releases
 
-This project uses [Release Please](https://github.com/googleapis/release-please) for automated versioning based on [Conventional Commits](https://www.conventionalcommits.org/).
+This project uses [Release Please](https://github.com/googleapis/release-please) for automated versioning. When a release is published, a versioned Docker image is pushed to `ghcr.io/thomasehardt/open-resume`.
 
-### How it works
+See [RELEASING.md](RELEASING.md) for the full release guide.
 
-1. Commit to `main` using conventional commit messages: `feat:`, `fix:`, `docs:`, `chore:`, etc.
-2. Release Please creates or updates a release PR as commits accumulate.
-3. Merge the release PR to publish a new GitHub Release with a version tag (e.g. `v1.2.0`).
-4. On release, workflows build and publish a versioned Docker image to GHCR and attach generated resume files.
-
-### Commit message conventions
+### Quick summary
 
 ```
-feat: add support for custom footers
-fix: correct page margin in modern theme
-docs: update theme creation guide
-chore: bump dependencies
+Commit → Release Please PR → Merge → GitHub Release → Docker image published
 ```
 
-### Forking
+### For your own resume (forking)
 
-If you fork this repo for your own resume:
+If you want to use this as a resume template for your own GitHub repo:
 
-1. Replace the example YAML files in `src/content/examples/` with your resume data.
-2. The `latest.yml` workflow generates your resume on every push to `main`.
-3. When you're ready for a release, merge the Release Please PR — your resume files are attached to the GitHub Release.
+1. Fork the repository.
+2. Replace `src/content/examples/` with your own resume YAML.
+3. The `latest.yml` workflow generates your resume on every push to `main`.
+4. When you want a release, merge the Release Please PR — your resume files are attached to the GitHub Release and a Docker image is published to your fork's GHCR.
+
+The workflows work the same way for forks. Your Docker images go to `ghcr.io/<your-username>/open-resume`.
 
 ---
 
