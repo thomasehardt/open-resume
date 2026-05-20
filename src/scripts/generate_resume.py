@@ -8,26 +8,46 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from weasyprint import HTML as WeasyHTML
 
 
+BUILTIN_THEMES_DIR = "src/templates/themes"
+BUILTIN_TEMPLATES_DIR = "src/templates"
+DEFAULT_DATA = "src/content/examples/senior-backend-engineer.yaml"
+
+
 def load_resume_data(data_file):
     with open(data_file, "r") as f:
         return yaml.safe_load(f)
 
 
-def render_template(data, template_name, templates_dir):
+def merge_theme_dirs(builtin_dir, custom_dir):
+    """Return a list of theme directories, custom first for override priority."""
+    dirs = []
+    if custom_dir and os.path.isdir(custom_dir):
+        dirs.append(custom_dir)
+    if os.path.isdir(builtin_dir):
+        dirs.append(builtin_dir)
+    return dirs
+
+
+def get_available_themes(theme_dirs):
+    themes = {}
+    for d in theme_dirs:
+        if not os.path.isdir(d):
+            continue
+        for f in os.listdir(d):
+            if f.endswith(".html"):
+                name = f[:-5]
+                if name not in themes:
+                    themes[name] = os.path.join(d, f)
+    return themes
+
+
+def generate_html(data, theme, templates_dir, theme_dirs, short=False):
     env = Environment(
         loader=FileSystemLoader(templates_dir),
         autoescape=select_autoescape(["html", "xml"]),
     )
-    template = env.get_template(f"{template_name}.html")
-    return template.render(resume=data)
-
-
-def generate_html(data, output_path, theme, templates_dir, short=False):
-    env = Environment(
-        loader=FileSystemLoader(templates_dir),
-        autoescape=select_autoescape(["html", "xml"]),
-    )
-    template = env.get_template(f"themes/{theme}.html")
+    loader = FileSystemLoader(theme_dirs)
+    template = loader.load(env, f"{theme}.html")
     return template.render(resume=data, short=short)
 
 
@@ -60,7 +80,7 @@ def generate_docx(input_html, output_path):
             md_content += f"### {text}\n\n"
         elif elem.name == "p":
             md_content += f"{text}\n\n"
-        elif elem.name == "ul" or elem.name == "ol":
+        elif elem.name in ("ul", "ol"):
             for li in elem.find_all("li"):
                 md_content += f"- {li.get_text().strip()}\n"
             md_content += "\n"
@@ -187,86 +207,135 @@ def generate_txt(input_html, output_path):
     return output_path
 
 
-def generate_all_versions(data, output_base, templates_dir):
-    """Generate specific standardized versions: ATS and Modern."""
+def generate_single_theme(data, theme, output_base, templates_dir, theme_dirs, short=False):
     base_name = data.get("name", "resume").lower().replace(" ", "-")
-    
-    # Configuration for specific standardized outputs
-    configs = [
-        {"theme": "ats", "is_short": False, "label": "Full (ATS)"},
-        {"theme": "modern", "is_short": True, "label": "Short (Handout)"}
-    ]
 
-    for config in configs:
-        theme = config["theme"]
-        is_short = config["is_short"]
-        label = config["label"]
-        
-        theme_dir = os.path.join(output_base, theme)
-        os.makedirs(theme_dir, exist_ok=True)
+    env = Environment(
+        loader=FileSystemLoader(templates_dir),
+        autoescape=select_autoescape(["html", "xml"]),
+    )
+    loader = FileSystemLoader(theme_dirs)
+    template = loader.load(env, f"{theme}.html")
+    html_content = template.render(resume=data, short=short)
 
-        env = Environment(
-            loader=FileSystemLoader(templates_dir),
-            autoescape=select_autoescape(["html", "xml"]),
-        )
-        template = env.get_template(f"themes/{theme}.html")
-        html_content = template.render(resume=data, short=is_short)
+    theme_dir = os.path.join(output_base, theme)
+    os.makedirs(theme_dir, exist_ok=True)
 
-        html_file = os.path.join(theme_dir, f"{base_name}.html")
-        with open(html_file, "w") as f:
-            f.write(html_content)
+    html_file = os.path.join(theme_dir, f"{base_name}.html")
+    with open(html_file, "w") as f:
+        f.write(html_content)
 
-        pdf_file = os.path.join(theme_dir, f"{base_name}.pdf")
-        generate_pdf(html_file, pdf_file)
+    pdf_file = os.path.join(theme_dir, f"{base_name}.pdf")
+    generate_pdf(html_file, pdf_file)
 
-        docx_file = os.path.join(theme_dir, f"{base_name}.docx")
-        generate_docx(html_file, docx_file)
+    docx_file = os.path.join(theme_dir, f"{base_name}.docx")
+    generate_docx(html_file, docx_file)
 
-        md_file = os.path.join(theme_dir, f"{base_name}.md")
-        generate_md(html_file, md_file)
+    md_file = os.path.join(theme_dir, f"{base_name}.md")
+    generate_md(html_file, md_file)
 
-        txt_file = os.path.join(theme_dir, f"{base_name}.txt")
-        generate_txt(html_file, txt_file)
-        
-        print(f"  {theme}/ generated ({label}).")
+    txt_file = os.path.join(theme_dir, f"{base_name}.txt")
+    generate_txt(html_file, txt_file)
 
-    return True
+    print(f"  {theme}/ generated.")
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate resume in standardized formats")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
+
+    parser = argparse.ArgumentParser(description="Generate resume in multiple formats and themes")
     parser.add_argument(
-        "-d",
-        "--data",
-        default="src/content/examples/senior-backend-engineer.yaml",
+        "-d", "--data",
+        default=DEFAULT_DATA,
         help="Path to YAML data file",
     )
-    parser.add_argument("-o", "--output", default="output", help="Output directory")
+    parser.add_argument(
+        "-o", "--output",
+        default="output",
+        help="Output directory",
+    )
+    parser.add_argument(
+        "-t", "--theme",
+        action="append",
+        dest="themes",
+        help="Theme(s) to generate (can be specified multiple times, or comma-separated). Default: all available themes.",
+    )
+    parser.add_argument(
+        "--custom-themes-dir",
+        help="Directory with custom theme HTML templates. These override built-in themes of the same name.",
+    )
+    parser.add_argument(
+        "--list-themes",
+        action="store_true",
+        help="List available themes and exit",
+    )
+    parser.add_argument(
+        "--cover-letter",
+        action="store_true",
+        help="Also generate a cover letter",
+    )
+    parser.add_argument(
+        "--cover-letter-template",
+        default="src/templates/cover-letter.md",
+        help="Cover letter template path",
+    )
 
     args = parser.parse_args()
 
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
-    templates_dir = os.path.join(project_root, "src", "templates")
-    data_file = (
-        args.data if os.path.isabs(args.data) else os.path.join(project_root, args.data)
-    )
+    builtin_themes_dir = os.path.join(project_root, BUILTIN_THEMES_DIR)
+    builtin_templates_dir = os.path.join(project_root, BUILTIN_TEMPLATES_DIR)
+    custom_themes_dir = args.custom_themes_dir
 
-    if not os.path.exists(data_file):
-        print(f"Error: Data file not found: {data_file}")
+    if custom_themes_dir and not os.path.isabs(custom_themes_dir):
+        custom_themes_dir = os.path.join(project_root, custom_themes_dir)
+
+    theme_dirs = merge_theme_dirs(builtin_themes_dir, custom_themes_dir)
+    available = get_available_themes(theme_dirs)
+
+    if args.list_themes:
+        print("Available themes:")
+        for name in sorted(available.keys()):
+            source = available[name]
+            print(f"  {name}")
         return
 
+    data_file = args.data if os.path.isabs(args.data) else os.path.join(project_root, args.data)
+    if not os.path.exists(data_file):
+        print(f"Error: Data file not found: {data_file}")
+        sys.exit(1)
+
     data = load_resume_data(data_file)
-    output_base = (
-        args.output
-        if os.path.isabs(args.output)
-        else os.path.join(project_root, args.output)
-    )
 
-    print("Generating standardized resumes...\n")
-    generate_all_versions(data, output_base, templates_dir)
+    output_base = args.output if os.path.isabs(args.output) else os.path.join(project_root, args.output)
 
-    print(f"\nDone! Generated resume packages in {output_base}/")
+    themes_to_generate = args.themes
+    if themes_to_generate:
+        expanded = []
+        for t in themes_to_generate:
+            expanded.extend([x.strip() for x in t.split(",")])
+        themes_to_generate = expanded
+    else:
+        themes_to_generate = list(available.keys())
+
+    for theme in themes_to_generate:
+        if theme not in available:
+            print(f"Warning: Theme '{theme}' not found. Skipping.")
+            continue
+        is_short = theme == "modern"
+        generate_single_theme(data, theme, output_base, builtin_templates_dir, theme_dirs, short=is_short)
+
+    print(f"\nDone! Generated files in {output_base}/")
+
+    if args.cover_letter:
+        cover_letter_script = os.path.join(script_dir, "generate_cover_letter.py")
+        subprocess.run(
+            [sys.executable, cover_letter_script,
+             "-d", data_file,
+             "-t", os.path.join(project_root, args.cover_letter_template),
+             "-o", os.path.join(output_base, "cover-letter.md")],
+            check=True,
+        )
 
 
 if __name__ == "__main__":

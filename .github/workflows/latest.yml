@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'src/**'
+      - 'src/content/**'
+      - 'src/templates/**'
       - '.github/workflows/latest.yml'
 
 jobs:
@@ -19,27 +20,22 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Generator Image
-        run: ./build.sh
+        run: docker build -t resume-generator .
 
       - name: Generate All Resumes
         run: |
           mkdir -p output
-          docker run --rm -v "$(pwd):/app" resume-generator
+          docker run --rm \
+            -v "$(pwd)/src:/app/src" \
+            -v "$(pwd)/output:/app/output" \
+            resume-generator \
+            -d /app/src/content/$(ls src/content/*.yaml src/content/examples/*.yaml 2>/dev/null | head -1 | xargs basename)
           sudo chown -R $USER:$USER output
 
       - name: Prepare Assets for Release
         run: |
           mkdir -p release_assets
-          
-          # Modern Handout
-          for ext in html pdf docx md txt; do
-            cp "output/modern/thomas-ehardt.$ext" "release_assets/thomas-ehardt-modern.$ext"
-          done
-          
-          # ATS Version
-          for ext in html pdf docx md txt; do
-            cp "output/ats/thomas-ehardt.$ext" "release_assets/thomas-ehardt-ats.$ext"
-          done
+          find output -type f \( -name "*.html" -o -name "*.pdf" -o -name "*.docx" -o -name "*.md" -o -name "*.txt" \) -exec cp {} release_assets/ \;
 
       - name: Update Latest Release
         uses: softprops/action-gh-release@v2
@@ -48,14 +44,14 @@ jobs:
           name: "Latest Resume"
           files: release_assets/*
           body: |
-            This release contains the most up-to-date version of my resume, automatically generated from the `main` branch.
-            
+            This release contains the most up-to-date version of the resume, automatically generated from the `main` branch.
+
             **Last Updated:** ${{ github.event.head_commit.timestamp }}
             **Commit:** [`${{ github.sha }}`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
-            
-            Standardized Versions (Available in PDF, DOCX, HTML, MD, and TXT):
-            - **Modern Handout**: Optimized for human reviewers.
-            - **ATS Version**: Optimized for automated systems.
+
+            Generated files (available in HTML, PDF, DOCX, MD, and TXT):
+            - **ats/**: ATS-optimized version
+            - **modern/**: Modern handout version
           draft: false
           prerelease: false
-          make_latest: false # We keep the versioned tags as the "official" latest release in the UI
+          make_latest: false

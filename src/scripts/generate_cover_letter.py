@@ -8,23 +8,35 @@ from datetime import datetime
 from jinja2 import Template
 import yaml
 
-DEFAULT_TEMPLATE = "src/templates/cover-letter.md"
-
 
 def main():
     parser = argparse.ArgumentParser(description="Generate cover letter")
     parser.add_argument(
-        "-o", "--output", default="output/cover-letter.md", help="Output file"
+        "-d", "--data",
+        default="src/content/examples/senior-backend-engineer.yaml",
+        help="Path to YAML data file",
     )
     parser.add_argument(
-        "-t", "--template", default=DEFAULT_TEMPLATE, help="Template file"
+        "-o", "--output",
+        default="output/cover-letter.md",
+        help="Output file",
+    )
+    parser.add_argument(
+        "-t", "--template",
+        default="src/templates/cover-letter.md",
+        help="Template file",
     )
     args = parser.parse_args()
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
+
     template_file = os.path.join(project_root, args.template)
-    data_file = os.path.join(project_root, "src/content/examples/senior-backend-engineer.yaml")
+    data_file = args.data if os.path.isabs(args.data) else os.path.join(project_root, args.data)
+
+    if not os.path.exists(data_file):
+        print(f"Error: Data file not found: {data_file}")
+        sys.exit(1)
 
     with open(data_file) as f:
         resume = yaml.safe_load(f)
@@ -32,7 +44,7 @@ def main():
     with open(template_file) as f:
         template = Template(f.read())
 
-    output_path = os.path.join(project_root, args.output)
+    output_path = args.output if os.path.isabs(args.output) else os.path.join(project_root, args.output)
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     with open(output_path, "w") as f:
