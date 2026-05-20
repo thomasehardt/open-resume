@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/thomasehardt/open-resume/compare/v1.0.0...v1.0.1) (2026-05-20)
+
+
+### Bug Fixes
+
+* mount data file directly instead of overriding src/ in workflows ([4f194b7](https://github.com/thomasehardt/open-resume/commit/4f194b7322928d6754a2dede8b75041b56a9569e))
+
 ## 1.0.0 (2026-05-20)
 
 ### Features
